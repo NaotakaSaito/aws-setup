@@ -1,10 +1,8 @@
 sudo yum install -y vim
-sudo yum install -y httpd
-sudo service httpd start
-cd ~
+sudo yum install git gcc-c++ make openssl-devel
 git clone https://github.com/creationix/nvm.git ~/.nvm
-cp .bash_profile ~/
-source ~/.bash_profile
 
-nvm install v6.1
-nvm use v6.1
+cp .bashrc .vimrc ~/
+
+
+
