@@ -1,0 +1,56 @@
+# master側
+##lsyncdのinstall
+sudo apt-get install lsyncd
+
+
+## /etc/lsyncd.confを作成
+targetにはIPアドレスをrsync先のIPアドレスを指定する
+```
+settings{
+    logfile = "/var/log/lsyncd.log",
+    statusFile = "/tmp/lsyncd.stat",
+    statusInterval = 1,
+}
+sync{
+    default.rsync,
+    source="/var/www/html/",
+    target="172.31.19.118::/var/www/html",
+    rsync = {
+        archive = true,
+        links = true,
+        update = true,
+        verbose = false
+    }
+}
+```
+
+## /etc/init.d/lsyncを編集
+lsyncd.confのパスが異なっているので修正する
+
+
+# slave側
+## rsyncの設定 /etc/rsync.conf
+
+uid = root
+gid = root
+read only = no
+log file = /home/slave/logs/rsyncd.log
+pid file = /home/slave/logs/rsyncd.pid
+port = 873
+
+[www]
+path = /var/www/html/
+hosts allow = 172.31.19.118
+read only = false
+
+# slave側873ポートの開放
+
+# master側
+```
+ssh-keygen
+```
+
+
+
+
+
