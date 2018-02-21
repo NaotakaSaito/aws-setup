@@ -16,7 +16,7 @@ ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa.rsync
 	2) 秘密鍵: ~/.ssh/id_rsa.rsync
 
 ### 公開鍵をログイン先に登録する
-ログイン先の`~/.ssh/authorized_keys`にログインもとの公開鍵を追記する
+ログイン先の`~/.ssh/authorized_keys`にログイン元の公開鍵を追記する
 
 ### ログインの試験
 ログイン元から接続試験を行う
@@ -27,13 +27,11 @@ ssh -i ~/.ssh/id_rsa.rsync rsync@xxx.xxx.xxx.xxx
 ### rsyncのユーザアカウントにsudoの後のパスワードを不要にする
 ```
 sudo visudo
-
 =====
 # Allow members of group sudo to execute any command
 %sudo	ALL=(ALL:ALL) ALL
 rsync   ALL=(ALL) NOPASSWD: ALL
 =====
-
 ```
 
 
@@ -44,6 +42,7 @@ sudo apt-get install lsyncd
 
 ## /etc/lsyncd.confを作成
 targetにはIPアドレスをrsync先のIPアドレスを指定する
+
 ```
 settings {
         logfile    = "/var/log/lsyncd.log",
@@ -62,7 +61,6 @@ sync{
         verbose = false,
           rsh = "/usr/bin/ssh -i /home/rsync/.ssh/id_rsa.rsync -o UserKnownHostsFile=/home/rsync/.ssh/known_hosts"
     }
-
 }
 ```
 
@@ -78,7 +76,7 @@ gid = root
 read only = no
 log file = /var/log/rsyncd.log
 pid file = /var/run/rsyncd.pid
- 
+
 [www]
 path = /var/www/html/
 hosts allow = 172.31.17.120
@@ -90,9 +88,15 @@ exclude = .svn
 # AWSの設定
 ## rsyncに使用するslave側873ポートの開放
 
-
-
 # サービスの起動
-sudo service lsyncd
+## ホスト側(lsyncd側)
+sudo service lsyncd start
+sudo service lsyncd stop
+sudo service lsyncd restart
+
+## スレーブ側(rsync側)
+sudo service rsync start
+sudo service rsync stop
+sudo service rsync restart
 
 
