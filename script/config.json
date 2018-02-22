@@ -1,0 +1,54 @@
+{
+	"root": "/var/www/html",
+	"projectPath": [
+		{
+			"src": "/var/www/html/factory-iot2",
+			"dst": "factory-iot"
+		},
+		{
+			"src": "/var/www/html/lib",
+			"dst": "lib"
+		}
+	],
+	"targetJS":[
+		"factory-iot/dashboard/index.js",
+		"factory-iot/download/index.js",
+		"factory-iot/evaluation/index.js",
+		"factory-iot/gatewayConfig/index.js",
+		"factory-iot/heatmapOfCapacity/index.js",
+		"factory-iot/logEdit/index.js",
+		"factory-iot/logTable/index.js",
+		"factory-iot/logView/index.js",
+		"factory-iot/machineConfig/index.js",
+		"factory-iot/personal/index.js",
+		"factory-iot/reasonConfig/index.js",
+		"factory-iot/tableOfCapacity/index.js",
+		"factory-iot/userConfig/index.js",
+		"lib/common.js"
+	],
+	"targetHTML": [
+		"factory-iot/index.html",
+		"factory-iot/dashboard/index.html",
+		"factory-iot/download/index.html",
+		"factory-iot/evaluation/index.html",
+		"factory-iot/gatewayConfig/index.html",
+		"factory-iot/heatmapOfCapacity/index.html",
+		"factory-iot/logEdit/index.html",
+		"factory-iot/logTable/index.html",
+		"factory-iot/logView/index.html",
+		"factory-iot/machineConfig/index.html",
+		"factory-iot/mailauth/index.html",
+		"factory-iot/password/index.html",
+		"factory-iot/personal/index.html",
+		"factory-iot/reasonConfig/index.html",
+		"factory-iot/tableOfCapacity/index.html",
+		"factory-iot/userConfig/index.html"
+	],
+	"targetInstancePath": "/home/ubuntu/backup/",
+	"targetInstance": [
+		{
+			"dns": "ubuntu@ec2-54-199-99-142.ap-northeast-1.compute.amazonaws.com",
+			"id":  "i-036e23bbb3783b4bf"
+		}
+	]
+}
