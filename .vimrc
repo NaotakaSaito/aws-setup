@@ -34,13 +34,13 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 " 構文エラーチェック
 NeoBundle 'scrooloose/syntastic'
 " 多機能セレクタ
-NeoBundle 'ctrlpvim/ctrlp.vim'
+"NeoBundle 'ctrlpvim/ctrlp.vim'
 " CtrlPの拡張プラグイン. 関数検索
-NeoBundle 'tacahiroy/ctrlp-funky'
+"NeoBundle 'tacahiroy/ctrlp-funky'
 " CtrlPの拡張プラグイン. コマンド履歴検索
-NeoBundle 'suy/vim-ctrlp-commandline'
+"NeoBundle 'suy/vim-ctrlp-commandline'
 " CtrlPの検索にagを使う
-NeoBundle 'rking/ag.vim'
+"NeoBundle 'rking/ag.vim'
 " プロジェクトに入ってるESLintを読み込む
 NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
 " NERDTreeを設定
@@ -51,14 +51,14 @@ NeoBundle 'elzr/vim-json'
 
 
 " vimのlua機能が使える時だけ以下のVimプラグインをインストールする
-if has('lua')
+" if has('lua')
     " コードの自動補完
-    NeoBundle 'Shougo/neocomplete.vim'
+    " NeoBundle 'Shougo/neocomplete.vim'
     " スニペットの補完機能
-    NeoBundle "Shougo/neosnippet"
+    " NeoBundle "Shougo/neosnippet"
     " スニペット集
-    NeoBundle 'Shougo/neosnippet-snippets'
-endif
+    " NeoBundle 'Shougo/neosnippet-snippets'
+" endif
 
 call neobundle#end()
 
@@ -176,24 +176,24 @@ endif
 "----------------------------------------------------------
 " neocomplete・neosnippetの設定
 "----------------------------------------------------------
-if neobundle#is_installed('neocomplete.vim')
+" if neobundle#is_installed('neocomplete.vim')
     " Vim起動時にneocompleteを有効にする
-    let g:neocomplete#enable_at_startup = 1
+    " let g:neocomplete#enable_at_startup = 1
     " smartcase有効化. 大文字が入力されるまで大文字小文字の区別を無視する
-    let g:neocomplete#enable_smart_case = 1
+    " let g:neocomplete#enable_smart_case = 1
     " 3文字以上の単語に対して補完を有効にする
-    let g:neocomplete#min_keyword_length = 3
+    " let g:neocomplete#min_keyword_length = 3
     " 区切り文字まで補完する
-    let g:neocomplete#enable_auto_delimiter = 1
+    " let g:neocomplete#enable_auto_delimiter = 1
     " 1文字目の入力から補完のポップアップを表示
-    let g:neocomplete#auto_completion_start_length = 1
+    " let g:neocomplete#auto_completion_start_length = 1
     " バックスペースで補完のポップアップを閉じる
-    inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
+    " inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
 
     " エンターキーで補完候補の確定. スニペットの展開もエンターキーで確定
-    imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
+    " imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
     " タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ
-    imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+    " imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
 endif
 
 "----------------------------------------------------------
@@ -220,21 +220,21 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 "----------------------------------------------------------
 " CtrlP
 "----------------------------------------------------------
-let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100' " マッチウインドウの設定. 「下部に表示, 大きさ20行で固定, 検索結果100件」
-let g:ctrlp_show_hidden = 1 " .(ドット)から始まるファイルも検索対象にする
-let g:ctrlp_types = ['fil'] "ファイル検索のみ使用
-let g:ctrlp_extensions = ['funky', 'commandline'] " CtrlPの拡張として「funky」と「commandline」を使用
+" let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100' " マッチウインドウの設定. 「下部に表示, 大きさ20行で固定, 検索結果100件」
+" let g:ctrlp_show_hidden = 1 " .(ドット)から始まるファイルも検索対象にする
+" let g:ctrlp_types = ['fil'] "ファイル検索のみ使用
+" let g:ctrlp_extensions = ['funky', 'commandline'] " CtrlPの拡張として「funky」と「commandline」を使用
 
 " CtrlPCommandLineの有効化
-command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
+" command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 
 " CtrlPFunkyの絞り込み検索設定
-let g:ctrlp_funky_matchtype = 'path'
+" let g:ctrlp_funky_matchtype = 'path'
 
-if executable('ag')
-  let g:ctrlp_use_caching=0 " CtrlPのキャッシュを使わない
-  let g:ctrlp_user_command='ag %s -i --hidden -g ""' " 「ag」の検索設定
-endif
+" if executable('ag')
+  " let g:ctrlp_use_caching=0 " CtrlPのキャッシュを使わない
+  " let g:ctrlp_user_command='ag %s -i --hidden -g ""' " 「ag」の検索設定
+" endif
 " 起動時にNERDTreeを表示
 autocmd vimenter * NERDTree
 
