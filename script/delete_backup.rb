@@ -55,10 +55,9 @@ for file in backupList do
 end
 
 puts "[999]\texit"
-
 puts "please enter..."
 
-str = gets.chop
+str = $stdin.gets.chomp!
 num = str.to_i
 if num == 0 then
 	backupList.delete_at(latest["index"])
@@ -77,7 +76,4 @@ elsif num > 0 && num <= backupList.length then
 else
 	puts "input number error"
 end
-
-
-
 
