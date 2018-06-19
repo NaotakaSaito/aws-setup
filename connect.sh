@@ -7,17 +7,20 @@
 S10=ubuntu@ec2-52-69-244-75.ap-northeast-1.compute.amazonaws.com
 S20=ubuntu@ec2-13-231-71-177.ap-northeast-1.compute.amazonaws.com
 S30=ubuntu@ec2-54-199-99-142.ap-northeast-1.compute.amazonaws.com
-echo $S10
-echo $S20
-echo $S30
+S40=ubuntu@ec2-18-179-7-129.ap-northeast-1.compute.amazonaws.com
+S110=pi@192.168.30.19
+S120=pi@192.168.30.16
 function ConfirmExecution() {
 
 	echo "----------------------------"
 	echo "  接続するAWSのサーバーを選択してください。"
-	echo "  [10] www.iot.lapis-semi.com(master) :"$S10
-	echo "  [20] api.lazurite.io(master) :       "$S20
-	echo "  [30] www.lazurite.io(master) :       "$S30
-	echo "  [99] exit"
+	echo "  [ 10] www.iot.lapis-semi.com(master) :"$S10
+	echo "  [ 20] api.lazurite.io(master) :       "$S20
+	echo "  [ 30] www.lazurite.io(master) :       "$S30
+	echo "  [ 40] www.lazurite.io(master) :       "$S40
+	echo "  [110] www-iot-lazurite-io(replica) :  "$S110
+	echo "  [120] api-lazurite-io(replica) :      "$S120
+	echo "  [0] exit"
 
 	read input
 
@@ -39,7 +42,19 @@ function ConfirmExecution() {
 		ssh -i ~/.ssh/solutions-op-key-pair.pem $S30
 		ConfirmExecution
 
-	elif [ $input = '99' ] ; then
+	elif [ $input = '40' ] ; then
+		ssh -i ~/.ssh/solutions-op-key-pair.pem $S40
+		ConfirmExecution
+
+	elif [ $input = '110' ] ; then
+		ssh -i ~/.ssh/solutions-op-key-pair.pem $S110
+		ConfirmExecution
+
+	elif [ $input = '120' ] ; then
+		ssh -i ~/.ssh/solutions-op-key-pair.pem $S120
+		ConfirmExecution
+
+	elif [ $input = '0' ] ; then
 
 		echo "  スクリプトを終了します."
 		exit 1

@@ -1,0 +1,10 @@
+# apache2のグループを変更する
+/etc/apache2/envvars
+export APACHE_RUN_USER=naotaka
+export APACHE_RUN_GROUP=naotaka
+
+service apache2 restart
+
+sudo chown -R ubuntu /var/www/html
+sudo chgrp -R ubuntu /var/www/html
+
